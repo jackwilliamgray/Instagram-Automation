@@ -1,6 +1,6 @@
 from instapy import InstaPy
 from instapy import smart_run
-
+import json
 ## Get list of all followers
 
 # login credentials
@@ -20,5 +20,6 @@ with smart_run(session):
 #   session.set_do_like(enabled=True,percentage=100)
   # activity
 #   session.like_by_feed(amount=100, interact=True)
-  followers =session.grab_following(username="xfootballco", amount="full", live_match=True, store_locally=True)
-  print(followers)
+  followers=session.grab_following(username="xfootballco", amount="full", live_match=True, store_locally=True)
+  with open('followers.json', 'w', encoding='utf-8') as f:
+    json.dump(followers, f, ensure_ascii=False, indent=4)
